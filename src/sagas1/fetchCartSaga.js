@@ -1,15 +1,24 @@
-import { takeLatest, put } from 'redux-saga/effects'
+import {
+    takeLatest,
+    put
+} from 'redux-saga/effects'
 import fetch from 'isomorphic-fetch';
 
 import {
     SET_CURRENT_USER,
     setCartItems
-} from './../actions'
+} from '../actions'
 
-function* fetchCart({user}) {
-    const { id } = user;
+function* fetchCart({
+    user
+}) {
+    const {
+        id
+    } = user;
     const response = yield fetch(`http://localhost:8081/cart/${id}`);
-    const { items } = yield response.json();
+    const {
+        items
+    } = yield response.json();
     yield put(setCartItems(items));
 }
 

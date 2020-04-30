@@ -2,22 +2,20 @@ const webpack = require('webpack');
 const path = require('path');
 module.exports = {
     module: {
-        loaders: [
-            {
-                loader: "babel-loader",
-                exclude: [
-                    /(node_modules)/,
-                ],
-                query: {
-                    presets: ['es2015','react'],
-                    plugins: ['transform-object-rest-spread']
-                }
+        rules: [{
+            loader: "babel-loader",
+            exclude: [
+                /(node_modules)/,
+            ],
+            options: {
+                presets: ['es2015', 'react'],
+                plugins: ['transform-object-rest-spread']
             }
-        ]
+        }]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        // new webpack.NoErrorsPlugin()
     ],
     entry: {
         "index": [
@@ -32,7 +30,7 @@ module.exports = {
         filename: "[name].bundle.js"
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
     },
     devtool: 'source-map'
 };

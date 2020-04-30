@@ -1,4 +1,9 @@
-import { takeLatest, select, put, call } from 'redux-saga/effects'
+import {
+    takeLatest,
+    select,
+    put,
+    call
+} from 'redux-saga/effects'
 import fetch from 'isomorphic-fetch';
 
 import {
@@ -8,16 +13,18 @@ import {
     decreaseItemQuantity,
     FETCHING,
     FETCHED
-} from './../actions'
+} from '../actions'
 
 import {
     currentUserSelector
 } from '../selectors'
 
-export function* handleIncreaseItemQuantity({id}) {
+export function* handleIncreaseItemQuantity({
+    id
+}) {
     yield put(setItemQuantityFetchStatus(FETCHING));
     const user = yield select(currentUserSelector);
-    const response = yield call(fetch,`http://localhost:8081/cart/add/${user.get('id')}/${id}`);
+    const response = yield call(fetch, `http://localhost:8081/cart/add/${user.get('id')}/${id}`);
 
     if (response.status !== 200) {
         yield put(decreaseItemQuantity(id, true));
@@ -26,13 +33,16 @@ export function* handleIncreaseItemQuantity({id}) {
     yield put(setItemQuantityFetchStatus(FETCHED));
 }
 
-export function* handleDecreaseItemQuantity({id, local}) {
+export function* handleDecreaseItemQuantity({
+    id,
+    local
+}) {
     if (local) {
         return;
     }
     yield put(setItemQuantityFetchStatus(FETCHING));
     const user = yield select(currentUserSelector);
-    const response = yield call(fetch,`http://localhost:8081/cart/remove/${user.get('id')}/${id}`);
+    const response = yield call(fetch, `http://localhost:8081/cart/remove/${user.get('id')}/${id}`);
     if (response.status !== 200) {
         console.warn("Received non-200 status:: ", response);
     }
