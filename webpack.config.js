@@ -1,36 +1,31 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require("webpack");
+const path = require("path");
 module.exports = {
     module: {
         rules: [{
-            loader: "babel-loader",
-            exclude: [
-                /(node_modules)/,
-            ],
-            options: {
-                presets: ['es2015', 'react'],
-                plugins: ['transform-object-rest-spread']
-            }
-        }]
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: {
+                loader: "babel-loader",
+            },
+        }, ],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        // new webpack.NoErrorsPlugin()
     ],
     entry: {
-        "index": [
-            'babel-regenerator-runtime',
-            'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
-            './'
-        ]
+        index: [
+            "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true",
+            "./",
+        ],
     },
     output: {
         path: path.resolve(__dirname, "public"),
         publicPath: "/assets",
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: [".js", ".jsx"],
     },
-    devtool: 'source-map'
+    devtool: "source-map",
 };
