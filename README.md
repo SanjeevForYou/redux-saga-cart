@@ -32,15 +32,20 @@ Make sure that the port `8080` is available before running `npm start`
 Make sure you're running the latest version of `node`. Make sure the following dependencies are installed globally as not all OS's respect global dependencies:
 ```javascript
 {
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.8",
-    "babel-plugin-transform-object-rest-spread": "^6.19.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.23.0",
-    "babel-regenerator-runtime": "^6.5.0",
-    "webpack": "^1.13.3",
-    "webpack-dev-middleware": "^1.10.1",
-    "webpack-hot-middleware": "^2.17.1",
-    "webpack-dev-server": "^1.16.5"
+    "@babel/core": "~7.9.6",
+    "@babel/node": "~7.8.7",
+    "@babel/plugin-transform-runtime": "~7.9.6",
+    "@babel/preset-env": "~7.9.6",
+    "@babel/preset-react": "~7.9.4",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "~8.1.0",
+    "chai": "^4.2.0",
+    "jest": "^25.5.2",
+    "mocha": "^7.1.2",
+    "redux-devtools": "^3.5.0",
+    "redux-tool": "^1.0.0",
+    "webpack": "~4.43.0",
+    "webpack-cli": "~3.3.11",
+    "webpack-dev-server": "^3.10.3"
 }
 ```
